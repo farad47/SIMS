@@ -1,0 +1,52 @@
+services:
+  sims-db:
+    image: postgres:16
+    container_name: sims-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: sims_dev
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - sims-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d sims_dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  sims-pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: sims-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@sims.pl
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    volumes:
+      - sims-pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      sims-db:
+        condition: service_healthy
+
+  sims-api:
+    build:
+      context: .
+      dockerfile: SIMS.API/Dockerfile
+    container_name: sims-api
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Host=sims-db;Port=5432;Database=sims_dev;Username=admin;Password=admin
+    ports:
+      - "5000:8080"
+    depends_on:
+      sims-db:
+        condition: service_healthy
+
+volumes:
+  sims-db-data:
+  sims-pgadmin-data:

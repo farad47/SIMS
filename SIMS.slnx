@@ -1,4 +1,7 @@
 <Solution>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
   <Project Path="SIMS.API/SIMS.API.csproj" />
   <Project Path="SIMS.Application/SIMS.Application.csproj" />
   <Project Path="SIMS.Core/SIMS.Core.csproj" />
