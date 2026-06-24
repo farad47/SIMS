@@ -2,7 +2,12 @@
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SIMS.Application;
+using SIMS.Application.Repositories;
+using SIMS.Core;
 using SIMS.Infrastructure.Database;
+using SIMS.Infrastructure.Repositories;
+using SIMS.Infrastructure.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,6 +21,12 @@ namespace SIMS.Infrastructure
             IConfiguration configuration)
         {
             services.AddDatabase(configuration);
+
+            services.AddScoped<IProducts, Products>();
+            services.AddScoped<IOrders, Orders>();
+            services.AddScoped<IAddresses, Addresses>();
+            services.AddScoped<ICountries, Countries>();
+            services.AddScoped<ICustomers, Customers>();
 
             using (var scope = services.BuildServiceProvider().CreateScope())
             {
