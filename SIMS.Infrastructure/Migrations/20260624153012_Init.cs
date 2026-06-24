@@ -16,13 +16,11 @@ namespace SIMS.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    Continent = table.Column<int>(type: "integer", nullable: false),
-                    CountryCode = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
                     DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UserCreated = table.Column<string>(type: "text", nullable: false),
-                    UserUpdated = table.Column<string>(type: "text", nullable: true)
+                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Continent = table.Column<int>(type: "integer", nullable: false),
+                    CountryCode = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,15 +32,13 @@ namespace SIMS.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DateUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
                     Price = table.Column<decimal>(type: "numeric(18,2)", precision: 18, scale: 2, nullable: false),
                     Currency = table.Column<int>(type: "integer", nullable: false),
-                    Stock = table.Column<int>(type: "integer", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    DateUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UserCreated = table.Column<string>(type: "text", nullable: false),
-                    UserUpdated = table.Column<string>(type: "text", nullable: true)
+                    Stock = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,14 +50,12 @@ namespace SIMS.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DateUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Street = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     City = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     PostCode = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
-                    CountryId = table.Column<Guid>(type: "uuid", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    DateUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UserCreated = table.Column<string>(type: "text", nullable: false),
-                    UserUpdated = table.Column<string>(type: "text", nullable: true)
+                    CountryId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,12 +73,10 @@ namespace SIMS.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
-                    AddressId = table.Column<Guid>(type: "uuid", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UserCreated = table.Column<string>(type: "text", nullable: false),
-                    UserUpdated = table.Column<string>(type: "text", nullable: true)
+                    Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    AddressId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -102,16 +94,14 @@ namespace SIMS.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DateUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     TotalAmount = table.Column<decimal>(type: "numeric(18,2)", precision: 18, scale: 2, nullable: false),
-                    PurchaseDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
+                    PurchaseDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     DeliveryDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     OrderStatus = table.Column<int>(type: "integer", nullable: false),
                     PaymentStatus = table.Column<int>(type: "integer", nullable: false),
-                    AddressId = table.Column<Guid>(type: "uuid", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    DateUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UserCreated = table.Column<string>(type: "text", nullable: false),
-                    UserUpdated = table.Column<string>(type: "text", nullable: true)
+                    AddressId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -129,14 +119,12 @@ namespace SIMS.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DateUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     OrderId = table.Column<Guid>(type: "uuid", nullable: false),
                     ProductId = table.Column<Guid>(type: "uuid", nullable: false),
                     Unit = table.Column<int>(type: "integer", nullable: false),
-                    Price = table.Column<decimal>(type: "numeric(18,2)", precision: 18, scale: 2, nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    DateUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UserCreated = table.Column<string>(type: "text", nullable: false),
-                    UserUpdated = table.Column<string>(type: "text", nullable: true)
+                    Price = table.Column<decimal>(type: "numeric(18,2)", precision: 18, scale: 2, nullable: false)
                 },
                 constraints: table =>
                 {

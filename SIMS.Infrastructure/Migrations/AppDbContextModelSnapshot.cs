@@ -26,7 +26,8 @@ namespace SIMS.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnOrder(0);
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -37,10 +38,12 @@ namespace SIMS.Infrastructure.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnOrder(1);
 
                     b.Property<DateTime?>("DateUpdated")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnOrder(2);
 
                     b.Property<string>("PostCode")
                         .IsRequired()
@@ -51,13 +54,6 @@ namespace SIMS.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
-
-                    b.Property<string>("UserCreated")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserUpdated")
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -70,7 +66,8 @@ namespace SIMS.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnOrder(0);
 
                     b.Property<int>("Continent")
                         .HasColumnType("integer");
@@ -81,22 +78,17 @@ namespace SIMS.Infrastructure.Migrations
                         .HasColumnType("character varying(10)");
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnOrder(1);
 
                     b.Property<DateTime?>("DateUpdated")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnOrder(2);
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
-
-                    b.Property<string>("UserCreated")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserUpdated")
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -107,28 +99,24 @@ namespace SIMS.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnOrder(0);
 
                     b.Property<Guid>("AddressId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnOrder(1);
 
                     b.Property<DateTime?>("DateUpdated")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnOrder(2);
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
-
-                    b.Property<string>("UserCreated")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserUpdated")
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -141,16 +129,19 @@ namespace SIMS.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnOrder(0);
 
                     b.Property<Guid>("AddressId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnOrder(1);
 
                     b.Property<DateTime?>("DateUpdated")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnOrder(2);
 
                     b.Property<DateTime?>("DeliveryDate")
                         .HasColumnType("timestamp with time zone");
@@ -162,20 +153,11 @@ namespace SIMS.Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("PurchaseDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("now()");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<decimal>("TotalAmount")
                         .HasPrecision(18, 2)
                         .HasColumnType("numeric(18,2)");
-
-                    b.Property<string>("UserCreated")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserUpdated")
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -188,13 +170,16 @@ namespace SIMS.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnOrder(0);
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnOrder(1);
 
                     b.Property<DateTime?>("DateUpdated")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnOrder(2);
 
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uuid");
@@ -209,13 +194,6 @@ namespace SIMS.Infrastructure.Migrations
                     b.Property<int>("Unit")
                         .HasColumnType("integer");
 
-                    b.Property<string>("UserCreated")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserUpdated")
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
@@ -229,20 +207,26 @@ namespace SIMS.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnOrder(0);
 
                     b.Property<int>("Currency")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnOrder(1);
 
                     b.Property<DateTime?>("DateUpdated")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnOrder(2);
 
                     b.Property<string>("Description")
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -255,13 +239,6 @@ namespace SIMS.Infrastructure.Migrations
 
                     b.Property<int>("Stock")
                         .HasColumnType("integer");
-
-                    b.Property<string>("UserCreated")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserUpdated")
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
