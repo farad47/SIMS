@@ -4,14 +4,24 @@ using SIMS.Core;
 
 namespace SIMS.Infrastructure.Database.Configurations
 {
-    internal class OrderConfiguration : IEntityTypeConfiguration<Order>
+    internal class OrderConfiguration : BaseEntityConfiguration<Order>
     {
-        public void Configure(EntityTypeBuilder<Order> builder)
+        public override void Configure(EntityTypeBuilder<Order> builder)
         {
+            base.Configure(builder);
+
             builder.Property(x => x.TotalAmount).HasPrecision(18, 2);
-            builder.Property(x => x.PurchaseDate).HasDefaultValueSql("now()");
-            builder.HasOne(x => x.Address).WithMany().HasForeignKey(x => x.AddressId).IsRequired(true);
-            builder.HasMany(x => x.OrderItems).WithOne(x => x.Order).HasForeignKey(x => x.OrderId).OnDelete(DeleteBehavior.Cascade);
+            builder.Property(x => x.PurchaseDate);
+
+            builder.HasOne(x => x.Address)
+                   .WithMany()
+                   .HasForeignKey(x => x.AddressId)
+                   .IsRequired();
+
+            builder.HasMany(x => x.OrderItems)
+                   .WithOne(x => x.Order)
+                   .HasForeignKey(x => x.OrderId)
+                   .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
