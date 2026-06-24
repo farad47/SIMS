@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SIMS.Infrastructure;
+using SIMS.Application.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +13,8 @@ namespace SIMS.Application
             this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddInfrastructure(configuration);
+
+
             return services;
         }
     }

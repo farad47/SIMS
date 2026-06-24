@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SIMS.Core\SIMS.Core.csproj" />
-    <ProjectReference Include="..\SIMS.Infrastructure\SIMS.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
