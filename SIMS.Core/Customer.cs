@@ -8,7 +8,7 @@ namespace SIMS.Core
     {
         public required string Name { get; init; }
         public Guid AddressId { get; set; }
-        public Address Address { get; set; }
+        public Address Address { get; private set; } = null!;
 
         public Customer(string name, Guid addressId)
         {

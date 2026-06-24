@@ -11,7 +11,7 @@ namespace SIMS.Core
         public required string City { get; set; }
         public required string PostCode { get; set; }
         public Guid CountryId { get; set; }
-        public Country Country { get; set; }
+        public Country Country { get; private set; } = null!;
 
         public Address(string street, string city, string postCode, Guid countryId)
         {

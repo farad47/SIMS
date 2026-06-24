@@ -8,9 +8,9 @@ namespace SIMS.Core
     public class OrderItem : BaseEntity
     {
         public Guid OrderId { get; set; }
-        public Order Order { get; private set; }
+        public Order Order { get; private set; } = null!;
         public Guid ProductId { get; set; }
-        public Product Product { get; private set; }
+        public Product Product { get; private set; } = null!;
         public int Unit { get; private set; }
         public decimal Price { get; private set; }
 

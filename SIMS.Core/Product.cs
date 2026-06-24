@@ -15,16 +15,18 @@ namespace SIMS.Core
         public decimal Price { get; private set; }
         public CurrencyType Currency { get; private set; }
         public int Stock { get; private set; }
-        private bool IsActive { get; set; }
+        //public Guid CategoryId { get; set; }
+        //public Category Category { get; private set; } = null!;
+        public bool IsActive { get; private set; }
 
         public bool IsAvailable => IsActive && Stock > 0;
 
-
+        public Product() { }
         public Product(
             string name,
             string description,
             decimal price,
-            CurrencyType currency,
+            string currency,
             int stock)
         {
             SetName(name);
@@ -107,12 +109,19 @@ namespace SIMS.Core
             Price = price;
         }
 
-        private void SetCurrency(CurrencyType currency)
+        private void SetCurrency(string currency)
         {
-            if (currency == CurrencyType.Unknown)
-                throw new ArgumentException("Currency is required.", nameof(currency));
+            if(Enum.TryParse(currency, true, out CurrencyType parsedCurrency))
+            {
+                if (parsedCurrency == CurrencyType.Unknown)
+                    throw new ArgumentException("Currency is required.", nameof(parsedCurrency));
 
-            Currency = currency;
+                Currency = parsedCurrency;
+            }
+            else
+            {
+                throw new ArgumentException("Invalid currency type.", nameof(currency));
+            }
         }
 
         private void SetStock(int stock)

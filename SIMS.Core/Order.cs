@@ -8,12 +8,12 @@ namespace SIMS.Core
     public class Order : BaseEntity
     {
         public decimal TotalAmount { get; private set; }
-        public DateTime PurchaseDate { get; init; }
+        public DateTime PurchaseDate { get; init; } = DateTime.Now;
         public DateTime? DeliveryDate { get; private set; }
         public OrderStatusType OrderStatus { get; private set; }
         public PaymentStatusType PaymentStatus { get; private set; }
         public Guid AddressId { get; set; }
-        public Address Address { get; set; }
+        public Address Address { get; private set; } = null!;
 
         public List<OrderItem> OrderItems { get; set; } = new();
 
