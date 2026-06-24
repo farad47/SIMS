@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SIMS.Core
 {
-    public class Product : TechnicalField
+    public class Product : BaseEntity
     {
         [MaxLength(50)]
         public string Name { get; private set; }

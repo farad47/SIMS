@@ -4,15 +4,16 @@ using System.Text;
 
 namespace SIMS.Core
 {
-    public class Customer : TechnicalField
+    public class Customer : BaseEntity
     {
         public required string Name { get; init; }
-        public Address Address { get; private set; }
+        public Guid AddressId { get; set; }
+        public Address Address { get; set; }
 
-        public Customer(string name, Address address)
+        public Customer(string name, Guid addressId)
         {
             Name = name;
-            Address = address;
+            AddressId = addressId;
         }
     }
 }

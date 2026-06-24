@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SIMS.Core
 {
-    public class Country : TechnicalField
+    public class Country : BaseEntity
     {
         public string Name { get; init; }
         public ContinentType Continent { get; init; }

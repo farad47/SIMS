@@ -5,24 +5,24 @@ using System.Text;
 
 namespace SIMS.Core
 {
-    public class OrderItem : TechnicalField
+    public class OrderItem : BaseEntity
     {
-        public Order OrderId { get; private set; }
-        public Product ProductId { get; private set; }
+        public Guid OrderId { get; set; }
+        public Order Order { get; private set; }
+        public Guid ProductId { get; set; }
+        public Product Product { get; private set; }
         public int Unit { get; private set; }
         public decimal Price { get; private set; }
 
-        public CurrencyType CurrencyType => ProductId.Currency;
+        public CurrencyType CurrencyType => Product.Currency;
 
-        public OrderItem(Order order, Product product, int unit, decimal price)
+        public OrderItem(int unit, decimal price, Guid productId, Guid orderId)
         {
             SetUnit(unit);
             SetPrice(price);
 
-            OrderId = order;
-            ProductId = product;
-
-            Price = price;
+            ProductId = productId;
+            OrderId = orderId;
         }
 
         public void SetUnit(int unit)

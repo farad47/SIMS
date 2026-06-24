@@ -5,19 +5,20 @@ using System.Text;
 
 namespace SIMS.Core
 {
-    public class Address : TechnicalField
+    public class Address : BaseEntity
     {
         public required string Street { get; set; }
         public required string City { get; set; }
         public required string PostCode { get; set; }
-        public required Country Country { get; set; }
+        public Guid CountryId { get; set; }
+        public Country Country { get; set; }
 
-        public Address(string street, string city, string postCode, Country country)
+        public Address(string street, string city, string postCode, Guid countryId)
         {
             Street = street;
             City = city;
             PostCode = postCode;
-            Country = country;
+            CountryId = countryId;
         }
     }
 }

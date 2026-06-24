@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SIMS.Core
 {
-    public class TechnicalField
+    public abstract class BaseEntity
     {
         public Guid Id { get; init; }
         public required DateTime DateCreated { get; set; }
