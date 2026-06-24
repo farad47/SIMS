@@ -17,6 +17,15 @@ namespace SIMS.Infrastructure
         {
             services.AddDatabase(configuration);
 
+            using (var scope = services.BuildServiceProvider().CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                if (db.Database.GetPendingMigrations().Any())
+                {
+                    db.Database.Migrate();
+                }
+            }
+
             return services;
         }
 
